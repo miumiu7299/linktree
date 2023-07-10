@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkTree</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css" type="text/css">
+</head>
+<body>
+<style>
+    .container{
+        display: flex;
+        width: 500px;
+        height: 300px;
+        margin: 10px auto;
+        justify-content: center;
+        align-items: center;
+        background-color: whitesmoke;
+    }
+    .container2{
+
+        line-height: 17px;
+        text-align: center;
+        width: 300px;
+        height: 220px;
+
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .icon{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 40px;
+
+    }
+
+
+    .header_img img {
+        padding-top: 10px;
+        width: 70px;
+        height: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: cover;
+    }
+    .button{
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    .button1 {
+        background-color: royalblue;
+        color: white;
+        border: 1px solid royalblue;
+    }
+    .button1:hover {
+        background-color: white;
+        color: royalblue;
+    }
+</style>
+<div class="container">
+    <div class="container2">
+    <div class="header_img flex_column_center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/%E6%9F%AF%E6%96%87%E5%93%B2%E5%B8%82%E9%95%B7.jpg" alt="柯文哲">
+    </div>
+
+    <div>
+        <h3>柯文哲</h3>
+    </div>
+
+    <div class="icon">
+        <div id="link1"></div>
+        <div id="link2"></div>
+        <div id="link3"></div>
+    </div>
+
+
+</div>
+</div>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+
+<script>
+    fetch('links.json')
+        .then(response => response.json())
+        .then(data => {
+            const link1Element = document.getElementById('link1');
+            const link2Element = document.getElementById('link2');
+            const link3Element = document.getElementById('link3');
+            link1Element.innerHTML = `<a href="${data[0].link}"><i class="si si-facebook si--color"></i><br><button class="button button1">${data[0].text}</button></a>`;
+            link2Element.innerHTML = `<a href="${data[1].link}"><i class="si si-instagram si--color"></i><br><button class="button button1">${data[1].text}</button></a>`;
+            link3Element.innerHTML = `<a href="${data[2].link}"><i class="si si-wikipedia si--color"></i><br><button class="button button1">${data[2].text}</button></a>`;
+        })
+</script>
+
+
+</body>
+</html>
